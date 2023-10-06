@@ -93,6 +93,7 @@
    flex-direction: row;
    flex-wrap: wrap;
    justify-content: left;
+   width: 1220px;
 }
 
 .cards {
@@ -134,46 +135,199 @@
 .card_bottom_price {
    font-size: 22px;
    font-weight: bold;
-   margin-top: 90px;
+   margin-top: 50px;
    text-align: center;
    color: rgb(25, 0, 255);
+   margin-bottom: 10px;
+}
+
+.card_bottom_buttons {
+   height: 40px;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+}
+
+.edit_button {
+   width: 40px;
+   font-size: 25px;
+   border: 2px solid rgb(0, 9, 177);
+   text-decoration: none;
+   color: rgb(0, 9, 177);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 5px;
+   margin-left: 10px;
+   box-shadow: 1px 1px 1px 1px rgb(219, 171, 25)
+}
+
+.delete_button {
+   width: 40px;
+   font-size: 25px;
+   border: 2px solid rgb(0, 9, 177);
+   text-decoration: none;
+   color: rgb(0, 9, 177);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 5px;
+   margin-right: 10px;
+   box-shadow: 1px 1px 1px 1px red
 }
 
 .card1 .card_top {
    margin-left: 9px;
-   background: url("C:\\Coding\\Web\\Lab_3\\img\\cat.jpg") no-repeat;
+   background: url("C:\\Coding\\Web\\lab3repo\\Web_Lab_from3\\img\\cat.jpg") no-repeat;
    background-size: contain;
 }
 
 .card2 .card_top {
    margin-left: 9px;
-   background: url("C:\\Coding\\Web\\Lab_3\\img\\dog1.jpg") no-repeat;
+   background: url("C:\\Coding\\Web\\lab3repo\\Web_Lab_from3\\img\\dog1.jpg") no-repeat;
    background-size: contain;
 }
 
 .card3 .card_top {
    margin-top: 5px;
    margin-left: 5px;
-   background: url("C:\\Coding\\Web\\Lab_3\\img\\dog2.jpg") no-repeat;
+   background: url("C:\\Coding\\Web\\lab3repo\\Web_Lab_from3\\img\\dog2.jpg") no-repeat;
    background-size: contain;
 }
 
 .card4 .card_top {
    margin-left: 12px;
-   background: url("C:\\Coding\\Web\\Lab_3\\img\\parrot.jpg") no-repeat;
+   background: url("C:\\Coding\\Web\\lab3repo\\Web_Lab_from3\\img\\parrot.jpg") no-repeat;
    background-size: contain;
 }
 
 .card5 .card_top {
    margin-top: 5px;
    margin-left: 5px;
-   background: url("C:\\Coding\\Web\\Lab_3\\img\\giraffe.jpg") no-repeat;
+   background: url("C:\\Coding\\Web\\lab3repo\\Web_Lab_from3\\img\\giraffe.jpg") no-repeat;
    background-size: contain;
 }
 
 .card6 .card_top {
    margin-top: 5px;
    margin-left: 5px;
-   background: url("C:\\Coding\\Web\\Lab_3\\img\\elephant.jpg") no-repeat;
+   background: url("C:\\Coding\\Web\\lab3repo\\Web_Lab_from3\\img\\elephant.jpg") no-repeat;
    background-size: contain;
+}
+
+
+
+.modal {
+   display: none;
+   background: #a0c2df;
+   position: fixed;
+   top: 100px;
+   left: 30px;
+   bottom: 100px;
+   right: 30px;
+   z-index: 99999;
+   border-radius: 30px;
+   box-shadow: 2px 2px 16px 1px #585858;
+}
+
+.modal_vis {
+   display: block;
+}
+
+.body_block {
+   overflow: hidden;
+   margin-right: 17px;
+}
+
+#close_modal {
+   color: #BFE2FF;
+   font-size: 40px;
+   font-weight: bold;
+   font-family: Times, sans-serif;
+   border-radius: 50%;
+   border: 4px solid #BFE2FF;
+   width: 50px;
+   height: 50px;
+   line-height: 50px;
+   text-align: center;
+   margin: 20px;
+   cursor: pointer;
+   position: absolute;
+   right: 0;
+   transform: rotate(45deg);
+   /* box-sizing: content-box; */
+}
+
+#close_modal_edit {
+   color: #BFE2FF;
+   font-size: 40px;
+   font-weight: bold;
+   font-family: Times, sans-serif;
+   border-radius: 50%;
+   border: 4px solid #BFE2FF;
+   width: 50px;
+   height: 50px;
+   line-height: 50px;
+   text-align: center;
+   margin: 20px;
+   cursor: pointer;
+   position: absolute;
+   right: 0;
+   transform: rotate(45deg);
+   /* box-sizing: content-box; */
+}
+
+#close_modal:hover {
+   color: #FFF;
+   transform: rotate(135deg);
+}
+
+.modal_txt {
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 16px 20px rgba(0, 0, 0, 0.2);
+   background: #FFF;
+   padding: 30px;
+   margin: 100px auto;
+   max-width: 800px;
+   border-radius: 20px;
+}
+
+.modal_txt input {
+   padding: 10px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   font-size: 16px;
+   width: 300px;
+   margin-bottom: 10px;
+}
+
+#final_create {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 43px;
+   font-size: 25px;
+   border-radius: 10px;
+   text-decoration: none;
+   background-color: rgb(255, 246, 246);
+   width: 100px;
+   margin: 0 auto;
+   margin-top: 10px;
+   border: 2px solid black;
+   color: black;
+}
+
+#final_edit {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 43px;
+   font-size: 25px;
+   border-radius: 10px;
+   text-decoration: none;
+   background-color: rgb(255, 246, 246);
+   width: 100px;
+   margin: 0 auto;
+   margin-top: 10px;
+   border: 2px solid black;
+   color: black;
 }
