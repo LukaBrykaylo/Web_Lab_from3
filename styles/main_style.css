@@ -255,7 +255,6 @@
    position: absolute;
    right: 0;
    transform: rotate(45deg);
-   /* box-sizing: content-box; */
 }
 
 #close_modal_edit {
@@ -274,7 +273,6 @@
    position: absolute;
    right: 0;
    transform: rotate(45deg);
-   /* box-sizing: content-box; */
 }
 
 #close_modal:hover {
