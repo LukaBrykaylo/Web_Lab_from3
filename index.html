@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Lab 3</title>
+   <link rel="stylesheet" href="styles/linker_style.css">
+</head>
+
+<body>
+   <header class="header">
+      <div id="modal" class="modal bounceIn">
+         <div id="close_modal">+</div>
+         <div class="modal_txt">
+            <p>Enter Name:</p>
+            <input type="text" id="text_name">
+            <p>Enter Price:</p>
+            <input type="number" id="text_price" min="0">
+         </div>
+         <a href="#" id="final_create">Create</a>
+      </div>
+      <div id="modal_edit" class="modal bounceIn">
+         <div id="close_modal_edit">+</div>
+         <div class="modal_txt">
+            <p>Enter New Name:</p>
+            <input type="text" id="text_new_name">
+            <p>Enter New Price:</p>
+            <input type="number" id="text_new_price" min="0">
+         </div>
+         <a href="#" id="final_edit" class="final_edit_button">Edit</a>
+      </div>
+      <div class="header__left">
+         <a class="header__left__button" href="#">My Zoo</a>
+         <a class="header__left__button" href="#">My Animals</a>
+         <a class="header__left__button" href="#open" id="createAnimalButton">Create Animal</a>
+      </div>
+      <div class="header__right">
+         <input id="search_input" type="text" placeholder="Search...">
+         <a class="header__right__button" id="search_button" href="#">Search</a>
+         <a class="header__right__button" href="#">Clear</a>
+      </div>
+   </header>
+   <div class="main">
+      <div class="main__left">
+         <div class="main__left__upper">
+            <p class="main__left__upper-title">Manage animals</p>
+            <div class="main__left__upper-button">
+               <div>Sort by most expensive animals</div>
+               <a href="#" id="sortButton">Sort</a>
+            </div>
+         </div>
+         <div class="main__left__lower">
+            <p>Count total daily expenses:</p>
+            <a href="#" id="countButton">Count</a>
+            <p class="countText">Total: $0</p>
+         </div>
+      </div>
+      <div class="main__right">
+         <div class="card1 cards">
+            <div class="card_top"></div>
+            <div class="card_bottom">
+               <p class="card_bottom_name">Cat</p>
+               <p class="card_bottom_price">1100$</p>
+               <div class="card_bottom_buttons">
+                  <a href="#open" class="edit_button">E</a>
+                  <a href="#" class="delete_button">D</a>
+               </div>
+            </div>
+         </div>
+         <div class="card2 cards">
+            <div class="card_top"></div>
+            <div class="card_bottom">
+               <p class="card_bottom_name">Dog</p>
+               <p class="card_bottom_price">1500$</p>
+               <div class="card_bottom_buttons">
+                  <a href="#open" class="edit_button">E</a>
+                  <a href="#" class="delete_button">D</a>
+               </div>
+            </div>
+         </div>
+         <div class="card3 cards">
+            <div class="card_top"></div>
+            <div class="card_bottom">
+               <p class="card_bottom_name">Dog</p>
+               <p class="card_bottom_price">900$</p>
+               <div class="card_bottom_buttons">
+                  <a href="#open" class="edit_button">E</a>
+                  <a href="#" class="delete_button">D</a>
+               </div>
+            </div>
+         </div>
+         <div class="card4 cards">
+            <div class="card_top"></div>
+            <div class="card_bottom">
+               <p class="card_bottom_name">Parrot</p>
+               <p class="card_bottom_price">600$</p>
+               <div class="card_bottom_buttons">
+                  <a href="#open" class="edit_button">E</a>
+                  <a href="#" class="delete_button">D</a>
+               </div>
+            </div>
+         </div>
+         <div class="card5 cards">
+            <div class="card_top"></div>
+            <div class="card_bottom">
+               <p class="card_bottom_name">Giraffe</p>
+               <p class="card_bottom_price">999$</p>
+               <div class="card_bottom_buttons">
+                  <a href="#open" class="edit_button">E</a>
+                  <a href="#" class="delete_button">D</a>
+               </div>
+            </div>
+         </div>
+         <div class="card6 cards">
+            <div class="card_top"></div>
+            <div class="card_bottom">
+               <p class="card_bottom_name">Elephant</p>
+               <p class="card_bottom_price">1700$</p>
+               <div class="card_bottom_buttons">
+                  <a href="#open" class="edit_button">E</a>
+                  <a href="#" class="delete_button">D</a>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <script src="js/main.js"></script>
+</body>
+
+</html>
