@@ -96,7 +96,6 @@ document.getElementById("final_create").addEventListener("click", function () {
             deleteButtons = document.querySelectorAll('.delete_button');
             editButtons = document.querySelectorAll('.edit_button');
             deleteAdder();
-            // const lastEditButton = editButtons[editButtons.length - 1];
             add_edit_but();
         } else {
             alert("Please enter a valid price.");
