@@ -74,6 +74,7 @@ document.getElementById("final_create").addEventListener("click", function () {
             price: parseInt(price),
         };
 
+
         fetch("http://localhost:3000/create", {
             method: "POST",
             headers: {
