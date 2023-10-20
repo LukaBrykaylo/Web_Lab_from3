@@ -1,3 +1,7 @@
+const container = document.querySelector(".main__right");
+container.innerHTML = "";
+get_all_animals();
+
 function sortElements() {
     const container = document.querySelector('.main__right');
     const elements = Array.from(container.querySelectorAll('.cards'));
@@ -62,50 +66,31 @@ let deleteButtons = document.querySelectorAll('.delete_button');
 let editButtons = document.querySelectorAll('.edit_button');
 
 document.getElementById("final_create").addEventListener("click", function () {
-    const animalStyles = {
-        Cat: "margin-left: 9px; background: url('img/cat.jpg') no-repeat; background-size: contain;",
-        Dog: "margin-left: 9px; background: url('img/dog1.jpg') no-repeat; background-size: contain;",
-        Parrot: "margin-left: 12px; background: url('img/parrot.jpg') no-repeat; background-size: contain;",
-        Giraffe: "margin-top: 5px; margin-left: 5px; background: url('img/giraffe.jpg') no-repeat; background-size: contain;",
-        Elephant: "margin-top: 5px; margin-left: 5px; background: url('img/elephant.jpg') no-repeat; background-size: contain;"
-    };
-
-    const animalNames = ["Cat", "Dog", "Parrot", "Giraffe", "Elephant"];
-
     const selectedName = document.getElementById("text_name").value;
+    const price = document.getElementById("text_price").value;
+    if (selectedName && price !== null && !isNaN(price) && parseInt(price) >= 0) {
+        const data = {
+            name: selectedName,
+            price: parseInt(price),
+        };
 
-    if (selectedName && animalNames.includes(selectedName)) {
-        const price = document.getElementById("text_price").value;
-
-        if (price !== null && !isNaN(price) && parseInt(price) >= 0) {
-            const container = document.querySelector(".main__right");
-            const newCard = document.createElement("div");
-            newCard.classList.add("cards");
-            newCard.innerHTML = `
-              <div class="card_top" style="${animalStyles[selectedName]}"></div>
-              <div class="card_bottom">
-                <p class="card_bottom_name">${selectedName}</p>
-                <p class="card_bottom_price">${parseInt(price)}$</p>
-                <div class="card_bottom_buttons">
-                  <a href="#open" class="edit_button">E</a>
-                  <a href="#" class="delete_button">D</a>
-                </div>
-              </div>
-            `;
-            container.appendChild(newCard);
-            deleteButtons = document.querySelectorAll('.delete_button');
-            editButtons = document.querySelectorAll('.edit_button');
-            deleteAdder();
-            // const lastEditButton = editButtons[editButtons.length - 1];
-            add_edit_but();
-        } else {
-            alert("Please enter a valid price.");
-        }
+        fetch("http://localhost:3000/create", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+            .then((response) => response.json())
+            .then((result) => {
+                alert(result.message);
+            })
+            .catch((error) => {
+                console.error("Помилка при відправці POST-запиту: " + error);
+            });
     } else {
-        alert("Please select a valid animal name.");
+        alert("Будь ласка, введіть правильну назву та ціну.");
     }
-
-
 });
 
 
@@ -114,7 +99,17 @@ function deleteAdder() {
         button.addEventListener('click', function (event) {
             const card = event.target.closest('.cards');
             if (card) {
-                card.remove();
+                const id = card.dataset.id;
+                fetch(`http://localhost:3000/delete/${id}`, {
+                    method: 'DELETE',
+                })
+                    .then(response => response.json())
+                    .then(result => {
+                        card.remove();
+                    })
+                    .catch(error => {
+                        console.error('Помилка видалення:', error);
+                    });
             }
         });
     });
@@ -166,7 +161,7 @@ function add_edit_but() {
             const priceElement = card.querySelector('.card_bottom_price');
             card_name_modal.value = nameElement.textContent;
             card_price_modal.value = parseInt(priceElement.textContent);
-    
+
             close_edit_but.onclick = function () {
                 if (card) {
                     const nameElement = card.querySelector('.card_bottom_name');
@@ -175,6 +170,29 @@ function add_edit_but() {
                     const new_price = document.getElementById("text_new_price").value;
                     nameElement.textContent = new_name;
                     priceElement.textContent = `${parseInt(new_price)}$`;
+
+                    const id = card.dataset.id;
+                    const updateData = {
+                        id: id,
+                        newName: new_name,
+                        newPrice: new_price
+                    };
+
+                    fetch('http://localhost:3000/update', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(updateData)
+                    })
+                        .then(response => response.json())
+                        .then(result => {
+                            alert('Тварина оновлена в базі даних.');
+                        })
+                        .catch(error => {
+                            console.error('Помилка оновлення тварини:', error);
+                        });
+
                     modal_edit.classList.add('bounceOutDown');
                     window.setTimeout(function () {
                         modal_edit.classList.remove('modal_vis');
@@ -196,3 +214,44 @@ close_but2.onclick = function () {
         body.classList.remove('body_block');
     }, 500);
 };
+
+//------------------------------------------------------------------------------------
+
+function get_all_animals() {
+    fetch("http://localhost:3000/read")
+        .then((response) => response.json())
+        .then((data) => {
+            const animalStyles = {
+                Cat: "margin-left: 9px; background: url('img/cat.jpg') no-repeat; background-size: contain;",
+                Dog: "margin-left: 9px; background: url('img/dog1.jpg') no-repeat; background-size: contain;",
+                Parrot: "margin-left: 12px; background: url('img/parrot.jpg') no-repeat; background-size: contain;",
+                Giraffe: "margin-top: 5px; margin-left: 5px; background: url('img/giraffe.jpg') no-repeat; background-size: contain;",
+                Elephant: "margin-top: 5px; margin-left: 5px; background: url('img/elephant.jpg') no-repeat; background-size: contain;"
+            };
+
+            data.data.forEach(element => {
+                const newCard = document.createElement("div");
+                newCard.classList.add("cards");
+                newCard.dataset.id = element.id;
+                newCard.innerHTML = `
+                  <div class="card_top" style="${animalStyles[element.name]}"></div>
+                  <div class="card_bottom">
+                    <p class="card_bottom_name">${element.name}</p>
+                    <p class="card_bottom_price">${parseInt(element.price)}$</p>
+                    <div class="card_bottom_buttons">
+                      <a href="#open" class="edit_button">E</a>
+                      <a href="#" class="delete_button">D</a>
+                    </div>
+                  </div>
+                `;
+                container.appendChild(newCard);
+                deleteButtons = document.querySelectorAll('.delete_button');
+                editButtons = document.querySelectorAll('.edit_button');
+                deleteAdder();
+                add_edit_but();
+            });
+        })
+        .catch((error) => {
+            console.error("Помилка при отриманні даних: " + error);
+        });
+}
