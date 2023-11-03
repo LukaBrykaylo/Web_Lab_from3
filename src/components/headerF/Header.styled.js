@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '../styled';
 
 const HeaderContainer = styled.header`
   background-color: #242424;
@@ -36,10 +36,11 @@ const Navigation = styled.nav`
     padding: 0;
     display: flex;
   }
-
-  .homePage {
+  
+  .active {
     border-bottom: solid 3px #fff;
   }
+  
   
   li {
     margin-right: 20px;

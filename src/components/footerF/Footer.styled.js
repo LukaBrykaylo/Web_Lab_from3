@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '../styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 

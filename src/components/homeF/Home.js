@@ -14,8 +14,8 @@ const ImageWithText = ({ imageSrc, altText, text }) => {
 const CardList = ({ card }) => {
     return (
         <CardContainer>
-            {card.map((card) => (
-                <ImageWithText imageSrc={card.image} altText="Image" text={card.description} />
+            {card.map((card, index) => (
+                <ImageWithText key={index} imageSrc={card.image} altText="Image" text={card.description} />
             ))}
         </CardContainer>
     );
@@ -34,10 +34,10 @@ const Home = ({cards}) => {
             </HomeContainer>
             <CardList card={cards} />
             <HomeBut>
-                <a className='SeeMoreBut' href='/'>See More</a>
+                <a className='SeeMoreBut' href='/catalog'>See More</a>
             </HomeBut>
         </HomeMain>
     );
-};
+}; 
 
 export default Home;

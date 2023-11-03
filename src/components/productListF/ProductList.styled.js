@@ -1,9 +1,9 @@
-import styled from 'styled-components';
+import styled from '../styled';
 
 const ListContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
 `;
 
 export {ListContainer}
