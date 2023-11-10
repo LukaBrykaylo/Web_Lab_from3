@@ -1,8 +1,13 @@
-import { SelectSortOrder, SelectCategory, SearchInput, FindBut, CatalogOptions } from './FilterOpt.styled'
 import React, { useState } from 'react';
+import {
+    SelectSortOrder,
+    SelectCategory,
+    SearchInput,
+    FindBut,
+    CatalogOptions,
+} from './FilterOpt.styled';
 
-
-const FilterOptions = () => {
+const FilterOptions = ({ onFilterChange }) => {
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [sortOrder, setSortOrder] = useState('asc');
@@ -17,7 +22,11 @@ const FilterOptions = () => {
 
     const handleSortChange = (order) => {
         setSortOrder(order);
-    }; 
+    };
+
+    const handleApplyFilter = () => {
+        onFilterChange({ searchQuery, selectedCategory, sortOrder });
+    };
 
     return (
         <CatalogOptions>
@@ -27,7 +36,10 @@ const FilterOptions = () => {
                 value={searchQuery}
                 onChange={(e) => handleSearch(e.target.value)}
             />
-            <SelectCategory value={selectedCategory} onChange={(e) => handleCategoryChange(e.target.value)}>
+            <SelectCategory
+                value={selectedCategory}
+                onChange={(e) => handleCategoryChange(e.target.value)}
+            >
                 <option value="all">All Categories</option>
                 <option value="dog">Dogs</option>
                 <option value="cat">Cats</option>
@@ -35,13 +47,14 @@ const FilterOptions = () => {
                 <option value="giraffe">Giraffes</option>
                 <option value="parrot">Parrots</option>
             </SelectCategory>
-            <SelectSortOrder value={sortOrder} onChange={(e) => handleSortChange(e.target.value)}>
+            <SelectSortOrder
+                value={sortOrder}
+                onChange={(e) => handleSortChange(e.target.value)}
+            >
                 <option value="asc">Ascending</option>
                 <option value="desc">Descending</option>
             </SelectSortOrder>
-            <FindBut>
-                Apply
-            </FindBut>
+            <FindBut onClick={handleApplyFilter} href='#'>Apply</FindBut>
         </CatalogOptions>
     );
 };
