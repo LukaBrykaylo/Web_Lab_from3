@@ -1,13 +1,27 @@
+import React, { useState } from 'react';
 import ProductList from '../productListF/ProductList';
-import { CatalogContainer, EmptyDiv } from './Catalog.styled'
+import { CatalogContainer, EmptyDiv } from './Catalog.styled';
 import FilterOptions from '../filterOptionsF/FilterOpt';
 
 const Catalog = ({ products }) => {
+    const [filter, setFilter] = useState({
+        searchQuery: '',
+        selectedCategory: 'all',
+        sortOrder: 'asc',
+    });
+
+    const handleFilterChange = (newFilter) => {
+        setFilter(newFilter);
+    };
+
     return (
         <CatalogContainer>
-            <FilterOptions/>
+            <FilterOptions onFilterChange={handleFilterChange} />
             <EmptyDiv>
-                <ProductList products={products} />
+                <ProductList
+                    products={products}
+                    filter={filter}
+                />
             </EmptyDiv>
         </CatalogContainer>
     );

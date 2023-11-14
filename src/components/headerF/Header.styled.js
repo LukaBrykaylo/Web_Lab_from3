@@ -53,10 +53,6 @@ const Navigation = styled.nav`
     padding-right: 15px;
     padding-left: 15px;
   }
-
-  a:hover {
-    text-decoration: underline;
-  }
 `;
 
 export { HeaderContainer, Logo, Navigation };

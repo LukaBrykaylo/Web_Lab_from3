@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ZooPicture from "../img/Zoo.jpg";
 import { HomeContainer, HomeImage, HomeText, HomeTitle, HomeContent, ImageWithTextContainer, Image, Text, CardContainer, HomeMain, HomeBut } from './Home.styled'
 
@@ -11,17 +11,13 @@ const ImageWithText = ({ imageSrc, altText, text }) => {
     );
 };
 
-const CardList = ({ card }) => {
-    return (
-        <CardContainer>
-            {card.map((card, index) => (
-                <ImageWithText key={index} imageSrc={card.image} altText="Image" text={card.description} />
-            ))}
-        </CardContainer>
-    );
-};
+const Home = ({ cards }) => {
+    const [visibleCardCount, setVisibleCardCount] = useState(3); // Початкова кількість видимих карток
 
-const Home = ({cards}) => {
+    const loadMore = () => {
+        setVisibleCardCount(visibleCardCount + 3); // Збільшення кількості видимих карток при кожному кліку
+    };
+
     return (
         <HomeMain>
             <HomeContainer>
@@ -32,12 +28,18 @@ const Home = ({cards}) => {
                         from majestic lions to playful penguins. Discover the wonders of the wild right here.</HomeText>
                 </HomeContent>
             </HomeContainer>
-            <CardList card={cards} />
-            <HomeBut>
-                <a className='SeeMoreBut' href='/catalog'>See More</a>
-            </HomeBut>
+            <CardContainer>
+                {cards.slice(0, visibleCardCount).map((card, index) => (
+                    <ImageWithText key={index} imageSrc={card.image} altText="Image" text={card.description} />
+                ))}
+            </CardContainer>
+            {visibleCardCount < cards.length && (
+                <HomeBut>
+                    <a className='SeeMoreBut' onClick={loadMore} href='#'>View More</a>
+                </HomeBut>
+            )}
         </HomeMain>
     );
-}; 
+};
 
 export default Home;

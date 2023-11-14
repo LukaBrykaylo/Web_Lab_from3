@@ -10,40 +10,48 @@ import Dog2Picture from "./components/img/dog2.jpg";
 import GiraffePicture from "./components/img/giraffe.jpg";
 import ParrotPicture from "./components/img/parrot.jpg";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ProductModalPage from './components/productModalPageF/productModalPage';
 import './App.css';
 
 const products = [
   {
+    id: 1,
     name: 'Cat',
     description: 'Goooood',
     price: '3242$',
     image: CatPicture,
   }, {
-    name: 'Dog1',
+    id: 2,
+    name: 'Dog',
     description: 'Nice',
     price: '222$',
     image: Dog1Picture,
   }, {
+    id: 3,
     name: 'Elephant',
     description: 'Awesome',
     price: '200$',
     image: ElephantPicture,
   }, {
-    name: 'Dog2',
+    id: 4,
+    name: 'Dog',
     description: 'Beautiful',
     price: '1111$',
     image: Dog2Picture,
   }, {
+    id: 5,
     name: 'Giraffe',
     description: 'Awwww',
     price: '2200$',
     image: GiraffePicture,
   }, {
+    id: 6,
     name: 'Parrot',
     description: 'Wonderful',
     price: '4422$',
     image: ParrotPicture,
   }, {
+    id: 7,
     name: 'Cat',
     description: 'Gooood',
     price: '222$',
@@ -61,6 +69,21 @@ const cards = [
   }, {
     description: 'Meet our majestic gentle giant, Ella. Ella is a magnificent elephant with enormous ears and a wise presence. This incredible creature exudes grace and strength as she roams the vast savannahs and forests of the wild. Ellas powerful but tender nature makes her a symbol of wisdom and dignity.',
     image: ElephantPicture,
+  }, {
+    description: 'a playful and curious cat with softThis mischievous kitty loves to chase toys, bask in the sun, and curl up on your lap for a cozy nap.',
+    image: ParrotPicture,
+  }, {
+    description: 'a wagging tail and a heart full of loyalty. This adorable pup enjoys long walks in the park, playing fetch, and cuddling on the couch with you.',
+    image: GiraffePicture,
+  }, {
+    description: 'ence. This incredible creature exudes grace and strength as she roams the vast savannahs and forests of the wild. Ellas powerful but tender nature makes her a symbol of wisdom and dignity.',
+    image: Dog2Picture,
+  }, {
+    description: 'a playful and curious cat with softThis mischievous kitty loves to chase toys, bask in the sun, and curl up on your lap for a cozy nap.',
+    image: Dog1Picture,
+  }, {
+    description: 'a wagging tail and a heart full of loyalty. This adorable pup enjoys long walks in the park, playing fetch, and cuddling on the couch with you.',
+    image: ElephantPicture,
   },
 ]
 
@@ -73,6 +96,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home cards={cards} />} />
             <Route path="/catalog" element={<Catalog products={products} />} />
+            <Route path="/product/:productId" element={<ProductModalPage products={products}/>} /> {/* Додайте маршрут для сторінки модального вікна */}
           </Routes>
         </div>
         <Footer />
