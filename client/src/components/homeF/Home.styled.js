@@ -92,7 +92,7 @@ const HomeBut = styled.div`
     border: none;
     display: flex;
     justify-content: center;
-    width: 100px;
+    width: 143px;
     margin: 0 auto;
     padding-right: 25px;
   }
