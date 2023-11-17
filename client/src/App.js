@@ -13,52 +13,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProductModalPage from './components/productModalPageF/productModalPage';
 import './App.css';
 
-const products = [
-  {
-    id: 1,
-    name: 'Cat',
-    description: 'Goooood',
-    price: '3242$',
-    image: CatPicture,
-  }, {
-    id: 2,
-    name: 'Dog',
-    description: 'Nice',
-    price: '222$',
-    image: Dog1Picture,
-  }, {
-    id: 3,
-    name: 'Elephant',
-    description: 'Awesome',
-    price: '200$',
-    image: ElephantPicture,
-  }, {
-    id: 4,
-    name: 'Dog',
-    description: 'Beautiful',
-    price: '1111$',
-    image: Dog2Picture,
-  }, {
-    id: 5,
-    name: 'Giraffe',
-    description: 'Awwww',
-    price: '2200$',
-    image: GiraffePicture,
-  }, {
-    id: 6,
-    name: 'Parrot',
-    description: 'Wonderful',
-    price: '4422$',
-    image: ParrotPicture,
-  }, {
-    id: 7,
-    name: 'Cat',
-    description: 'Gooood',
-    price: '222$',
-    image: CatPicture,
-  }
-]
-
 const cards = [
   {
     description: 'Meet our charming feline friend, Whiskers. Whiskers is a playful and curious cat with soft, fluffy fur and beautiful green eyes. This mischievous kitty loves to chase toys, bask in the sun, and curl up on your lap for a cozy nap.',
@@ -95,8 +49,8 @@ function App() {
         <div className="dark-background">
           <Routes>
             <Route path="/" element={<Home cards={cards} />} />
-            <Route path="/catalog" element={<Catalog products={products} />} />
-            <Route path="/product/:productId" element={<ProductModalPage products={products}/>} /> {/* Додайте маршрут для сторінки модального вікна */}
+            <Route path="/catalog" element={<Catalog  />} />
+            <Route path="/product/:productId" element={<ProductModalPage />} />
           </Routes>
         </div>
         <Footer />

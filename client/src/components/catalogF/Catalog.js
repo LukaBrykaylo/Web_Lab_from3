@@ -3,7 +3,7 @@ import ProductList from '../productListF/ProductList';
 import { CatalogContainer, EmptyDiv } from './Catalog.styled';
 import FilterOptions from '../filterOptionsF/FilterOpt';
 
-const Catalog = ({ products }) => {
+const Catalog = ({ product }) => {
     const [filter, setFilter] = useState({
         searchQuery: '',
         selectedCategory: 'all',
@@ -19,7 +19,6 @@ const Catalog = ({ products }) => {
             <FilterOptions onFilterChange={handleFilterChange} />
             <EmptyDiv>
                 <ProductList
-                    products={products}
                     filter={filter}
                 />
             </EmptyDiv>
