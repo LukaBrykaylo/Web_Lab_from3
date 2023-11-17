@@ -3,7 +3,7 @@ const router = express.Router();
 const controller = require('./controller');
 
 router.get('/read', controller.read);
-// router.get('/readDef', controller.readDef);
+router.get('/product/:productId', controller.getProductById);
 
 
 

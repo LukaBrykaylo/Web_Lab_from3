@@ -34,6 +34,9 @@ export const AnimalImage = styled.img`
 
 export const DescriptionContainer = styled.div`
   flex: 1;
+  .Price{
+    font-weight: bold;
+  }
 `;
 
 export const AnimalName = styled.h2`

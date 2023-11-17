@@ -5,16 +5,23 @@ import ProductModal from '../productModalF/ProductModal';
 import axios from 'axios';
 
 const ProductModalPage = ({ }) => {
-  const [products, setProducts] = useState([]);
+  const { productId } = useParams();
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/read')
-      .then(response => setProducts(response.data.data))
-      .catch(error => console.error('Error fetching products:', error));
-  }, []);
+    axios.get(`http://localhost:3001/product/${productId}`)
+      .then(response => setSelectedProduct(response.data.data[0]))
+      .catch(error => console.error('Error fetching product details:', error));
+  }, [productId]);
 
-  const { productId } = useParams();
-  const selectedProduct = products.find(product => product.id.toString() === productId);
+  // useEffect(() => {
+  //   axios.get('http://localhost:3001/read')
+  //     .then(response => setProducts(response.data.data))
+  //     .catch(error => console.error('Error fetching products:', error));
+  // }, []);
+
+  // const { productId } = useParams();
+  // const selectedProduct = products.find(product => product.id.toString() === productId);
 
   return (
     <div>

@@ -24,7 +24,7 @@ import {
 
 let cardImages = [
     CatPicture, Dog1Picture, ElephantPicture, Dog2Picture, GiraffePicture, ParrotPicture, CatPicture
-  ]
+]
 
 const ProductModal = ({ product }) => {
     const lorem = new LoremIpsum();
@@ -34,15 +34,16 @@ const ProductModal = ({ product }) => {
         <ModalContainer>
             <ModalContent>
                 <TopContent>
-                    <AnimalImage src={cardImages[product.id-1]} alt='Animal' />
+                    <AnimalImage src={cardImages[product.id - 1]} alt='Animal' />
                     <DescriptionContainer>
                         <AnimalName>{product.name}</AnimalName>
                         <AnimalDescription>{randomText}</AnimalDescription>
+                        <div className='Price'>Price {product.price}</div>
                     </DescriptionContainer>
                 </TopContent>
                 <Rating>
                     Rate Please!
-                    <Rate style={{marginLeft: "30px"}}/>
+                    <Rate style={{ marginLeft: "30px" }} />
                 </Rating>
                 <BottomContent>
                     <Link to={`../catalog/`} style={{ textDecoration: "none" }}>

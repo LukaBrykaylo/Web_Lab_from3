@@ -41,25 +41,26 @@ exports.read = (req, res) => {
     });
 };
 
-// exports.readDef = (req, res) => {
-//     const selectQuery = 'SELECT * FROM table1';
-//     db.query(selectQuery, (err, results) => {
-//         if (err) {
-//             res.status(500).json({ error: 'Database error' });
-//         } else {
-//             const data = results;
-//             const dataArray = [];
+exports.getProductById = (req, res) => {
+    const productId = req.params.productId;
+  
+    // Додайте SQL-запит для отримання окремого елемента за його ідентифікатором
+    const selectQuery = `SELECT * FROM table1 WHERE id = ${productId}`;
+  
+    db.query(selectQuery, (err, results) => {
+        if (err) {
+            res.status(500).json({ error: 'Database error' });
+        } else {
+            const data = results;
+            const dataArray = data.map(row => ({
+                id: row.id,
+                name: row.name,
+                price: `${row.price}$`,
+                description: row.description,
+            }));
 
-//             data.forEach((row) => {
-//                 dataArray.push({
-//                     id: row.id,
-//                     name: row.name,
-//                     price: `${row.price}$`,
-//                     description: row.description,
-//                 });
-//             });
-//             res.setHeader('Content-Type', 'application/json');
-//             res.json({ data: dataArray });
-//         }
-//     });
-// };
+            res.setHeader('Content-Type', 'application/json');
+            res.json({ data: dataArray });
+        }
+    });
+  };
