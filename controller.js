@@ -3,10 +3,8 @@ const db = require('./db');
 exports.read = (req, res) => {
     const { searchQuery, selectedCategory, sortOrder } = req.query;
 
-    // Створіть SQL-запит з урахуванням фільтрів
     let selectQuery = 'SELECT * FROM table1';
 
-    // Додайте умови для фільтрації
     if (searchQuery) {
         selectQuery += ` WHERE description LIKE '%${searchQuery}%'`;
     }
@@ -44,7 +42,6 @@ exports.read = (req, res) => {
 exports.getProductById = (req, res) => {
     const productId = req.params.productId;
   
-    // Додайте SQL-запит для отримання окремого елемента за його ідентифікатором
     const selectQuery = `SELECT * FROM table1 WHERE id = ${productId}`;
   
     db.query(selectQuery, (err, results) => {

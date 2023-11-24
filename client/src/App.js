@@ -11,6 +11,7 @@ import GiraffePicture from "./components/img/giraffe.jpg";
 import ParrotPicture from "./components/img/parrot.jpg";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProductModalPage from './components/productModalPageF/productModalPage';
+import Cart from "./components/cartF/Cart";
 import './App.css';
 
 const cards = [
@@ -51,6 +52,7 @@ function App() {
             <Route path="/" element={<Home cards={cards} />} />
             <Route path="/catalog" element={<Catalog  />} />
             <Route path="/product/:productId" element={<ProductModalPage />} />
+            <Route path="/Cart" element={<Cart/>} />
           </Routes>
         </div>
         <Footer />
