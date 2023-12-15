@@ -40,3 +40,7 @@
 ***
 ### Лабораторна робота №10
 Посилання на вітку [тут](https://github.com/LukaBrykaylo/Web_Lab_from3/pull/8)
+
+***
+### Лабораторна робота №11
+Посилання на вітку [тут](https://github.com/LukaBrykaylo/Web_Lab_from3/pull/9)
