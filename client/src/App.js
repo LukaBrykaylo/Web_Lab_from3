@@ -13,6 +13,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProductModalPage from './components/productModalPageF/productModalPage';
 import Cart from "./components/cartF/Cart";
 import './App.css';
+import Checkout from './components/checkoutF/Checkout';
+import Success from './components/checkoutF/Success';
 
 const cards = [
   {
@@ -53,6 +55,8 @@ function App() {
             <Route path="/catalog" element={<Catalog  />} />
             <Route path="/product/:productId" element={<ProductModalPage />} />
             <Route path="/Cart" element={<Cart/>} />
+            <Route path="/Cart/checkout" element={<Checkout/>} />
+            <Route path="/Cart/success" element={<Success/>} />
           </Routes>
         </div>
         <Footer />

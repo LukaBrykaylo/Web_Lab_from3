@@ -24,6 +24,10 @@ const Cart = () => {
     const animalArray = useSelector((state) => state.animalList);
     const [totalPrice, setTotalPrice] = useState(0);
 
+    const saveToLocalStorage = (key, data) => {
+        localStorage.setItem(key, JSON.stringify(data));
+    };
+
     useEffect(() => {
         let totalPrice = 0;
         animalArray.forEach((animal) => {
@@ -40,6 +44,10 @@ const Cart = () => {
     const handleDecrement = (name) => {
         dispatch(decrementCount(name));
     };
+
+    useEffect(() => {
+        saveToLocalStorage('animals', { animalList: animalArray });
+    }, [animalArray]);
 
     const filteredStadiums = animalArray.filter((animal) => animal.count > 0);
 
@@ -87,7 +95,9 @@ const Cart = () => {
                             Total Price: {totalPrice}$
                         </p>
                     )}
-                    {totalPrice > 0 && <Button size={"large"}>BUY</Button>}
+                    {totalPrice > 0 && <Button size={"large"}>
+                        <NavLink to="/Cart/checkout">BUY</NavLink>
+                    </Button>}
                 </CartButton>
             </CartMain>
         </div>
